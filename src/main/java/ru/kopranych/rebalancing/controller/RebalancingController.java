@@ -4,8 +4,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
-import ru.kopranych.rebalancing.model.Portfolio;
+import ru.kopranych.rebalancing.mapper.PortfolioMapper;
 import ru.kopranych.rebalancing.model.RebalancedPortfolio;
+import ru.kopranych.rebalancing.model.dto.PortfolioDto;
 import ru.kopranych.rebalancing.service.RebalancingPortfolioService;
 
 @RequiredArgsConstructor
@@ -15,8 +16,8 @@ public class RebalancingController {
   private final RebalancingPortfolioService rebalancingService;
 
   @PostMapping
-  public Mono<RebalancedPortfolio> rebalancing(Portfolio portfolio) {
-    return rebalancingService.rebalancing(portfolio);
+  public Mono<RebalancedPortfolio> rebalancing(PortfolioDto portfolio) {
+    return rebalancingService.rebalancing(PortfolioMapper.INSTANCE.map(portfolio));
   }
 
 }

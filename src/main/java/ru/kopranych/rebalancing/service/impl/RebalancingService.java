@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 import ru.kopranych.rebalancing.model.Portfolio;
+import ru.kopranych.rebalancing.model.Position;
 import ru.kopranych.rebalancing.model.RebalancedPortfolio;
 import ru.kopranych.rebalancing.service.RebalancingPortfolioService;
 
@@ -39,7 +40,26 @@ public class RebalancingService implements RebalancingPortfolioService {
   }
 
   private BigDecimal getNetAssetValue(Portfolio portfolio) {
-    return null;
+    return portfolio.getPositions()
+        .stream()
+        .map(Position::getVolume)
+        .reduce(BigDecimal::add)
+        .orElseGet(() -> {
+          log.warn("Empty positions volumes");
+          return BigDecimal.ZERO;
+        });
+  }
+
+  private BigDecimal getShareDelta(final BigDecimal targetShare, final BigDecimal currentShare) {
+    return targetShare.subtract(currentShare);
+  }
+
+  private BigDecimal getVolumeDelta(final BigDecimal shareDelta, final BigDecimal netAssetValue) {
+    return shareDelta.multiply(netAssetValue);
+  }
+
+  private BigDecimal getAmountDelta(final BigDecimal volumeDelta, final BigDecimal price) {
+    return volumeDelta.divide(price, MathContext.DECIMAL64);
   }
 
   private boolean isNotValidArguments(

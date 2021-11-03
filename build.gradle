@@ -21,6 +21,7 @@ repositories {
 ext {
 	set('springCloudVersion', "2020.0.4")
 	set('commonsLang', '3.12.0')
+	set('mapstructVersion', '1.4.2.Final')
 }
 
 dependencies {
@@ -33,6 +34,10 @@ dependencies {
 
 	//apache
 	implementation "org.apache.commons:commons-lang3:${commonsLang}" as String
+
+	//mapstruct
+	implementation "org.mapstruct:mapstruct:${mapstructVersion}"
+	implementation "org.mapstruct:mapstruct-processor:${mapstructVersion}"
 
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'io.micrometer:micrometer-registry-prometheus'
