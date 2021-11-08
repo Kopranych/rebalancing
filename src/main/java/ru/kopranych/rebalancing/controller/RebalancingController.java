@@ -2,6 +2,7 @@ package ru.kopranych.rebalancing.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
 import ru.kopranych.rebalancing.mapper.PortfolioMapper;
@@ -16,8 +17,10 @@ public class RebalancingController {
   private final RebalancingPortfolioService rebalancingService;
 
   @PostMapping
-  public Mono<RebalancedPortfolio> rebalancing(PortfolioDto portfolio) {
-    return rebalancingService.rebalancing(PortfolioMapper.INSTANCE.map(portfolio));
+  public Mono<RebalancedPortfolio> rebalancing(@RequestBody Mono<PortfolioDto> portfolio) {
+    return portfolio
+        .map(PortfolioMapper.INSTANCE::map)
+        .map(rebalancingService::rebalancing);
   }
 
 }

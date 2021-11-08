@@ -1,0 +1,20 @@
+spring:
+  cloud:
+    loadbalancer:
+      reactive:
+        ribbon:
+          enable: false
+
+  jackson:
+    serialization:
+      FAIL_ON_EMPTY_BEANS: false
+logging:
+  level:
+    feign.Logger: debug
+feign:
+  client:
+    config:
+      default:
+        loggerLevel: full
+
+

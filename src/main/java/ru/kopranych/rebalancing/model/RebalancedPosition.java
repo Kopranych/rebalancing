@@ -1,7 +1,9 @@
 package ru.kopranych.rebalancing.model;
 
 import java.math.BigDecimal;
+import lombok.Builder;
 
+@Builder
 public class RebalancedPosition {
 
   private String instrumentId;

@@ -11,5 +11,6 @@ public class Position {
   private BigDecimal amount;
   private BigDecimal targetShare;
   private BigDecimal volume;
+  private BigDecimal price;
 
 }
