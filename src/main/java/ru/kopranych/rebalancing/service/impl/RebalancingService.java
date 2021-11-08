@@ -31,7 +31,7 @@ public class RebalancingService implements RebalancingPortfolioService {
         .stream()
         .peek(position -> {
               final var quoteDtoList = quoteServiceImpl.get(position.getTicker(), now, now);
-              final var last = quoteDtoList.isEmpty() ? BigDecimal.valueOf(-1) : quoteDtoList.get(0).getLast();
+              final var last = quoteDtoList.isEmpty() ? BigDecimal.valueOf(0) : quoteDtoList.get(0).getLast();
               final var positionVolume = getPositionVolume(position.getAmount(), last);
 
               position.setVolume(positionVolume);
@@ -52,7 +52,7 @@ public class RebalancingService implements RebalancingPortfolioService {
               .delta(amountDelta)
               .amountAfter(amount.add(amountDelta))
               .targetShare(position.getTargetShare())
-              .currentShare(sharePosition)
+              .currentShare(sharePosition.multiply(BigDecimal.valueOf(100)))
               .ticker(position.getTicker())
               .build();
         })

@@ -47,7 +47,7 @@ public class CsvParserUtils {
         .findFirst()
         .orElseGet(() -> {
           log.warn("Not found price for rowCurr {}", rowCurr);
-          return BigDecimal.valueOf(-1);
+          return BigDecimal.ZERO;
         });
   }
 }

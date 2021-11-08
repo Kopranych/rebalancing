@@ -51,7 +51,7 @@ public class QuoteServiceImpl implements QuoteService {
             } catch (IOException e) {
               e.printStackTrace();
             }
-            return -1;
+            return 0;
           }).toProcessor().block();
 
       index += PAGE_SIZE;

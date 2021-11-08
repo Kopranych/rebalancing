@@ -34,23 +34,4 @@ public class FeignConfig {
   public ErrorDecoder errorDecoder() {
     return FeignException::errorStatus;
   }
-
-//  private ObjectFactory<HttpMessageConverters> messageConverters = HttpMessageConverters::new;
-
-//  /**
-//   * @return
-//   */
-//  @Bean
-//  Encoder feignEncoder() {
-//    return new SpringEncoder(messageConverters);
-//  }
-//
-//  /**
-//   * @return
-//   */
-//  @Bean
-//  Decoder feignDecoder() {
-//    return new SpringDecoder(messageConverters);
-//  }
-
 }
