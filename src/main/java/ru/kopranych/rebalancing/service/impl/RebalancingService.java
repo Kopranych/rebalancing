@@ -52,7 +52,7 @@ public class RebalancingService implements RebalancingPortfolioService {
               .delta(amountDelta)
               .amountAfter(amount.add(amountDelta))
               .targetShare(position.getTargetShare())
-              .currentShare(sharePosition.multiply(BigDecimal.valueOf(100)))
+              .currentShare(sharePosition)
               .ticker(position.getTicker())
               .build();
         })
