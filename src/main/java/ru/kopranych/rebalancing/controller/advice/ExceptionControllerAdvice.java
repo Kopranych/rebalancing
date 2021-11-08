@@ -6,10 +6,21 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import ru.kopranych.rebalancing.model.exception.ExceptionResponse;
+import ru.kopranych.rebalancing.model.exception.NotFoundException;
 
 @Slf4j
 @ControllerAdvice
 public class ExceptionControllerAdvice {
+
+  @ExceptionHandler(NotFoundException.class)
+  public ResponseEntity<ExceptionResponse> handleNotFoundExceptions(NotFoundException e) {
+    exceptionLog(e);
+    return ResponseEntity
+        .status(e.getHttpStatus())
+        .body(
+            new ExceptionResponse(e.getMessage(), e.getDetailed())
+        );
+  }
 
   @ExceptionHandler(Exception.class)
   public ResponseEntity<ExceptionResponse> handleUnpredictedExceptions(Exception e) {
