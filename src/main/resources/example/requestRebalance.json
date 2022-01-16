@@ -1,0 +1,46 @@
+{
+  "positions": [
+    {
+      "instrumentId": null,
+      "ticker": "FXIT",
+      "amount": 3,
+      "targetShare": 0.28,
+      "forwardSplits": [
+      ]
+    },
+    {
+      "instrumentId": null,
+      "ticker": "FXRL",
+      "amount": 17,
+      "targetShare": 0.52,
+      "forwardSplits": [
+        100
+      ]
+    },
+    {
+      "instrumentId": null,
+      "ticker": "FXUS",
+      "amount": 2,
+      "targetShare": 0.10,
+      "forwardSplits": [
+        100
+      ]
+    },
+    {
+      "instrumentId": null,
+      "ticker": "FXMM",
+      "amount": 4,
+      "targetShare": 0.05,
+      "forwardSplits": [
+      ]
+    },
+    {
+      "instrumentId": null,
+      "ticker": "FXGD",
+      "amount": 7,
+      "targetShare": 0.05,
+      "forwardSplits": [
+      ]
+    }
+  ]
+}

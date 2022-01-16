@@ -5,6 +5,7 @@ import static ru.kopranych.rebalancing.util.RebalanceCalculator.getNetAssetValue
 import static ru.kopranych.rebalancing.util.RebalanceCalculator.getPositionVolume;
 import static ru.kopranych.rebalancing.util.RebalanceCalculator.getShareDelta;
 import static ru.kopranych.rebalancing.util.RebalanceCalculator.getSharePosition;
+import static ru.kopranych.rebalancing.util.RebalanceCalculator.getSplitAmount;
 import static ru.kopranych.rebalancing.util.RebalanceCalculator.getVolumeDelta;
 
 import java.math.BigDecimal;
@@ -32,14 +33,17 @@ public class RebalancingService implements RebalancingPortfolioService {
         .peek(position -> {
               final var quote = quoteServiceImpl.get(position.getTicker());
               final var last = quote.getLast();
-              final var positionVolume = getPositionVolume(position.getAmount(), last);
-
+              final var splitAmount =
+                  getSplitAmount(position.getAmount(), position.getForwardSplits());
+              final var positionVolume = getPositionVolume(splitAmount, last);
+              position.setAmount(splitAmount);
               position.setVolume(positionVolume);
               position.setPrice(last);
             }
         ).toList();
 
     final var netAssetValue = getNetAssetValue(new Portfolio(updatedPositions));
+
     final var rebalancedPositions = updatedPositions.stream()
         .map(position -> {
           final var sharePosition = getSharePosition(netAssetValue, position.getVolume());

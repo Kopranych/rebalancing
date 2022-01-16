@@ -5,6 +5,7 @@ import static ru.kopranych.rebalancing.util.ValidatorUtils.isNotValidArguments;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
+import java.util.List;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 import ru.kopranych.rebalancing.model.Portfolio;
@@ -56,5 +57,10 @@ public class RebalanceCalculator {
 
   public static BigDecimal getAmountDelta(final BigDecimal volumeDelta, final BigDecimal price) {
     return volumeDelta.divide(price, MathContext.DECIMAL64).setScale(0, RoundingMode.DOWN);
+  }
+
+  public static BigDecimal getSplitAmount(final BigDecimal amount, List<BigDecimal> forwardSplit) {
+    return forwardSplit.stream()
+        .reduce(amount, BigDecimal::multiply);
   }
 }
