@@ -15,5 +15,6 @@ public class RebalancedPosition {
   private BigDecimal delta;
   private BigDecimal targetShare;
   private BigDecimal currentShare;
+  private BigDecimal volume;
 
 }

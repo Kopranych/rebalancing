@@ -40,11 +40,7 @@ public class RebalanceCalculator {
     return portfolio.getPositions()
         .stream()
         .map(Position::getVolume)
-        .reduce(BigDecimal::add)
-        .orElseGet(() -> {
-          log.warn("Empty positions volumes");
-          return BigDecimal.ZERO;
-        });
+        .reduce(portfolio.getCashInSavings(), BigDecimal::add);
   }
 
   public static BigDecimal getShareDelta(final BigDecimal targetShare, final BigDecimal currentShare) {

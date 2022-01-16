@@ -1,6 +1,7 @@
 package ru.kopranych.rebalancing.util;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static ru.kopranych.rebalancing.util.RebalanceCalculator.getNetAssetValue;
 import static ru.kopranych.rebalancing.util.RebalanceCalculator.getPositionVolume;
 import static ru.kopranych.rebalancing.util.RebalanceCalculator.getShareDelta;
 import static ru.kopranych.rebalancing.util.RebalanceCalculator.getSharePosition;
@@ -11,6 +12,8 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
 import org.junit.jupiter.api.Test;
+import ru.kopranych.rebalancing.model.Portfolio;
+import ru.kopranych.rebalancing.model.Position;
 
 class RebalanceCalculatorTest {
 
@@ -71,6 +74,22 @@ class RebalanceCalculatorTest {
     var actual = getSplitAmount(amount, splits);
     //then
     assertEquals(BigDecimal.valueOf(10000), actual);
+  }
+
+  @Test
+  void shouldCorrectCalculateNetAssetValue() {
+    //given
+    final var position1 = new Position();
+    position1.setVolume(BigDecimal.valueOf(200));
+    final var position2 = new Position();
+    position2.setVolume(BigDecimal.valueOf(1500));
+    final var positions = List.of(position1, position2);
+    final var cashInSaving = BigDecimal.valueOf(100000);
+    var portfolio = new Portfolio(positions, cashInSaving);
+    //when
+    var actual = getNetAssetValue(portfolio);
+    //then
+    assertEquals(BigDecimal.valueOf(101700), actual);
   }
 
 }

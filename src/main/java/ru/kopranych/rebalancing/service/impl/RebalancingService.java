@@ -42,7 +42,7 @@ public class RebalancingService implements RebalancingPortfolioService {
             }
         ).toList();
 
-    final var netAssetValue = getNetAssetValue(new Portfolio(updatedPositions));
+    final var netAssetValue = getNetAssetValue(new Portfolio(updatedPositions, portfolio.getCashInSavings()));
 
     final var rebalancedPositions = updatedPositions.stream()
         .map(position -> {
@@ -50,19 +50,23 @@ public class RebalancingService implements RebalancingPortfolioService {
           final var shareDelta = getShareDelta(position.getTargetShare(), sharePosition);
           final var volumeDelta = getVolumeDelta(shareDelta, netAssetValue);
           final var amountDelta = getAmountDelta(volumeDelta, position.getPrice());
+          final var volumeAfter = position.getVolume().add(volumeDelta);
+          final var currentShare = getSharePosition(netAssetValue, volumeAfter);
           final BigDecimal amount = position.getAmount();
+
           return RebalancedPosition.builder()
               .amountBefore(amount)
               .delta(amountDelta)
               .amountAfter(amount.add(amountDelta))
               .targetShare(position.getTargetShare())
-              .currentShare(sharePosition)
+              .currentShare(currentShare)
               .ticker(position.getTicker())
+              .volume(volumeAfter)
               .build();
         })
         .toList();
 
-    return new RebalancedPortfolio(rebalancedPositions);
+    return new RebalancedPortfolio(rebalancedPositions, netAssetValue.subtract(portfolio.getCashInSavings()), netAssetValue);
   }
 
 }
