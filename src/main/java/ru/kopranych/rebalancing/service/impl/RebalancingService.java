@@ -62,6 +62,7 @@ public class RebalancingService implements RebalancingPortfolioService {
               .currentShare(currentShare)
               .ticker(position.getTicker())
               .volume(volumeAfter)
+              .calculatedCurrentPrice(position.getPrice())
               .build();
         })
         .toList();
