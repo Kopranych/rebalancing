@@ -42,8 +42,9 @@ public class CsvParser {
   private List<QuoteDto> processQuotes(final CSVParser parser) {
     var headersMap = parser.getHeaderMap();
     return makeStream(parser)
-        .map( row ->  CsvParserUtils.buildQuote(headersMap, row))
+        .map( row -> CsvParserUtils.buildQuote(headersMap, row))
         .filter(quote -> quote.getLast() != null )
+        .sorted((q1, q2) -> q2.getLast().compareTo(q1.getLast()))
         .filter(distinctByKey(QuoteDto::getDate))
         .collect(toList());
   }

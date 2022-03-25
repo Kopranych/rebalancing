@@ -1,0 +1,259 @@
+{
+  "positions": [
+    {
+      "instrumentId": "string",
+      "ticker": "ROSN",
+      "amount": 18,
+      "targetShare": 0.1,
+      "forwardSplits": [
+      ]
+    },
+    {
+      "instrumentId": "string",
+      "ticker": "CHMF",
+      "amount": 5,
+      "targetShare": 0.1,
+      "forwardSplits": [
+      ]
+    },
+    {
+      "instrumentId": "string",
+      "ticker": "MAGN",
+      "amount": 60,
+      "targetShare": 0.05,
+      "forwardSplits": [
+      ]
+    },
+    {
+      "instrumentId": "string",
+      "ticker": "SGZH",
+      "amount": 0,
+      "targetShare": 0.05,
+      "forwardSplits": [
+      ]
+    },
+    {
+      "instrumentId": "string",
+      "ticker": "YAKG",
+      "amount": 0,
+      "targetShare": 0.1,
+      "forwardSplits": [
+      ]
+    },
+    {
+      "instrumentId": "string",
+      "ticker": "MVID",
+      "amount": 0,
+      "targetShare": 0.05,
+      "forwardSplits": [
+      ]
+    },
+    {
+      "instrumentId": "string",
+      "ticker": "DSKY",
+      "amount": 30,
+      "targetShare": 0.05,
+      "forwardSplits": [
+      ]
+    },
+    {
+      "instrumentId": "string",
+      "ticker": "POSI",
+      "amount": 0,
+      "targetShare": 0.1,
+      "forwardSplits": [
+      ]
+    },
+    {
+      "instrumentId": "string",
+      "ticker": "YNDX",
+      "amount": 0,
+      "targetShare": 0.1,
+      "forwardSplits": [
+      ]
+    },{
+      "instrumentId": "string",
+      "ticker": "VKCO",
+      "amount": 0,
+      "targetShare": 0.05,
+      "forwardSplits": [
+      ]
+    },
+    {
+      "instrumentId": "string",
+      "ticker": "GCHE",
+      "amount": 0,
+      "targetShare": 0.05,
+      "forwardSplits": [
+      ]
+    },
+    {
+      "instrumentId": "string",
+      "ticker": "TCSG",
+      "amount": 0,
+      "targetShare": 0.15,
+      "forwardSplits": [
+      ]
+    },
+    {
+      "instrumentId": "string",
+      "ticker": "SBER",
+      "amount": 20,
+      "targetShare": 0.05,
+      "forwardSplits": [
+      ]
+    }
+  ],
+  "cashInSavings": 65000
+}
+
+//response
+{
+  "rebalancedPositions": [
+    {
+      "instrumentId": null,
+      "ticker": "ROSN",
+      "amountBefore": 0,
+      "amountAfter": 21,
+      "delta": 21,
+      "targetShare": 0.1,
+      "currentShare": 0.1,
+      "volume": 6500,
+      "calculatedCurrentPrice": 308, //x2
+    },
+    {
+      "instrumentId": null,
+      "ticker": "CHMF",
+      "amountBefore": 0,
+      "amountAfter": 4,
+      "delta": 4,
+      "targetShare": 0.1,
+      "currentShare": 0.1,
+      "volume": 6500,
+      "calculatedCurrentPrice": 1410 //x1.3
+    },
+    {
+      "instrumentId": null,
+      "ticker": "MAGN",
+      "amountBefore": 0,
+      "amountAfter": 67,
+      "delta": 67,
+      "targetShare": 0.05,
+      "currentShare": 0.05,
+      "volume": 3250,
+      "calculatedCurrentPrice": 48.35 //x1.8
+    },
+    {
+      "instrumentId": null,
+      "ticker": "SGZH", //
+      "amountBefore": 0,
+      "amountAfter": 419,
+      "delta": 419,
+      "targetShare": 0.05,
+      "currentShare": 0.05,
+      "volume": 3250,
+      "calculatedCurrentPrice": 7.74 //x1.7
+    },
+    {
+      "instrumentId": null,
+      "ticker": "YAKG", //
+      "amountBefore": 0,
+      "amountAfter": 58,
+      "delta": 58,
+      "targetShare": 0.1,
+      "currentShare": 0.1,
+      "volume": 6500,
+      "calculatedCurrentPrice": 111.75 //x1.1
+    },
+    {
+      "instrumentId": null,
+      "ticker": "MVID", //
+      "amountBefore": 0,
+      "amountAfter": 12,
+      "delta": 12,
+      "targetShare": 0.05,
+      "currentShare": 0.05,
+      "volume": 3250,
+      "calculatedCurrentPrice": 264.4 //x2.5
+    },
+    {
+      "instrumentId": null,
+      "ticker": "DSKY",
+      "amountBefore": 0,
+      "amountAfter": 37,
+      "delta": 37,
+      "targetShare": 0.05,
+      "currentShare": 0.05,
+      "volume": 3250,
+      "calculatedCurrentPrice": 85.6 //x2
+    },
+    {
+      "instrumentId": null,
+      "ticker": "POSI", //
+      "amountBefore": 0,
+      "amountAfter": 11,
+      "delta": 11,
+      "targetShare": 0.1,
+      "currentShare": 0.1,
+      "volume": 6500,
+      "calculatedCurrentPrice": 566.4 //
+    },
+    {
+      "instrumentId": null,
+      "ticker": "YNDX", //
+      "amountBefore": 0,
+      "amountAfter": 3,
+      "delta": 3,
+      "targetShare": 0.1,
+      "currentShare": 0.1,
+      "volume": 6500,
+      "calculatedCurrentPrice": 1930 //x3
+    },
+    {
+      "instrumentId": null,
+      "ticker": "VKCO", //
+      "amountBefore": 0,
+      "amountAfter": 10,
+      "delta": 10,
+      "targetShare": 0.05,
+      "currentShare": 0.05,
+      "volume": 3250,
+      "calculatedCurrentPrice": 300 //
+    },
+    {
+      "instrumentId": null,
+      "ticker": "GCHE", //
+      "amountBefore": 0,
+      "amountAfter": 1,
+      "delta": 1,
+      "targetShare": 0.05,
+      "currentShare": 0.05,
+      "volume": 3250,
+      "calculatedCurrentPrice": 2837.5 //x1.5
+    },
+    {
+      "instrumentId": null,
+      "ticker": "TCSG", //
+      "amountBefore": 0,
+      "amountAfter": 2,
+      "delta": 2,
+      "targetShare": 0.15,
+      "currentShare": 0.15,
+      "volume": 9750,
+      "calculatedCurrentPrice": 3400 //x2.2
+    },
+    {
+      "instrumentId": null,
+      "ticker": "SBER",
+      "amountBefore": 0,
+      "amountAfter": 24,
+      "delta": 24,
+      "targetShare": 0.05,
+      "currentShare": 0.05,
+      "volume": 3250,
+      "calculatedCurrentPrice": 130.5 //x2.5
+    }
+  ],
+  "netAssetValueBefore": 0,
+  "netAssetValueAfter": 65000
+}
