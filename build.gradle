@@ -5,7 +5,6 @@ plugins {
 }
 
 group = 'ru.kopranych'
-version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
 
 configurations {
@@ -24,6 +23,11 @@ ext {
 	set('commonsCsv', '1.9.0')
 	set('mapstructVersion', '1.4.2.Final')
 	set('feignReactor', '3.1.1')
+}
+
+jar {
+	archivesBaseName = "${project.name}"
+	project.version = ""
 }
 
 dependencies {
