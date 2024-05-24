@@ -20,5 +20,5 @@ kubectl create ns dev
 helm install my-release rebalance --namespace dev
 helm delete my-release --namespace dev
 
-http://http://rebalance.local.ru/webjars/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config#/rebalancing-controller/rebalancing
+http://rebalance.local.ru/webjars/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config#/rebalancing-controller/rebalancing
 ```
